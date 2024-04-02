@@ -3,4 +3,10 @@
     <string name="too_short">Words must contain at least 4 letters</string>
     <string name="not_enough_vowels">Words must contain at least 2 vowels</string>
     <string name="invalid_word">Invalid word</string>
+    <string name="score">Score: 0</string>
+    <string name="submit">SUBMIT</string>
+    <string name="clear">CLEAR</string>
+    <string name="new_game">NEW GAME</string>
+    <string name="directions">Enter a word then hit submit</string>
+    <string name="repeat_word"> Try a new word! This one has already been used.</string>
 </resources>

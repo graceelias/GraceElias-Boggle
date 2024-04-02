@@ -9,13 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.graceelias_boggle.databinding.FragmentScoreBinding
 
-class ScoreFragment : Fragment(), OnDataPass
+class ScoreFragment : Fragment()
 {
     private var _binding: FragmentScoreBinding? = null
     private val binding
         get() = checkNotNull(_binding) {
             "Cannot access binding because it is null. Is the view visible?"
         }
+
+    private lateinit var gameResetter: OnDataPass
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,24 +28,27 @@ class ScoreFragment : Fragment(), OnDataPass
         _binding =
             FragmentScoreBinding.inflate(layoutInflater, container, false)
 
-        return binding.root
-    }
+        binding.newGameButton.setOnClickListener{
+            resetGame()
+            binding.score.setText("Score: 0")
+        }
 
-    override fun onUpdateScore(score: Int) {
-        TODO("Not yet implemented")
-    }
-    override fun onUpdateTotalScore(totalScore: Int) {
-        binding.score.setText("Score: " + totalScore)
+        return binding.root
     }
 
     fun updateScore(totalScore: Int)
     {
-
+        binding.score.setText("Score: " + totalScore)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        gameResetter = context as OnDataPass
+    }
 
-    interface OnScoreToMain{
-
+    private fun resetGame()
+    {
+        gameResetter.onResetGame()
     }
 
 }

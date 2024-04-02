@@ -17,16 +17,22 @@ class MainActivity : AppCompatActivity(), OnDataPass
     override fun onUpdateScore(score: Int)
     {
         totalScore += score
-        updateTotalScore(totalScore)
+
+        if(totalScore < 0)
+            totalScore = 0
+
+        val scoreFragment = supportFragmentManager.findFragmentById(R.id.score_fragment_container) as? ScoreFragment
+        scoreFragment?.updateScore(totalScore)
     }
 
-    override fun onUpdateTotalScore(totalScore: Int) {
+    override fun onResetGame() {
+        totalScore = 0
 
+        val boggleFragment = supportFragmentManager.findFragmentById(R.id.boggle_fragment_container) as? BoggleFragment
+        boggleFragment?.resetGame()
     }
 
-    private fun updateTotalScore(totalScore: Int)
-    {
-        totalScoreUpdater.onUpdateTotalScore(totalScore)
-    }
+
+
 
 }
