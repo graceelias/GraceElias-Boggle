@@ -79,6 +79,11 @@ class BoggleFragment : Fragment()
                         }
                         if (vowelCount > 1) {
                             updateScore(score)
+                            Toast.makeText(
+                                requireContext(),
+                                "+" + score,
+                                Toast.LENGTH_LONG
+                            ).show()
                         } else {
                             updateScore(-10)
                             Toast.makeText(
@@ -151,6 +156,8 @@ class BoggleFragment : Fragment()
     fun resetGame()
     {
         clear()
+
+        wordList.clear()
 
         for(i in 0..3)
         {
