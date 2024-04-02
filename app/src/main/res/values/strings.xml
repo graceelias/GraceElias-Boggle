@@ -9,4 +9,5 @@
     <string name="new_game">NEW GAME</string>
     <string name="directions">Enter a word then hit submit</string>
     <string name="repeat_word"> Try a new word! This one has already been used.</string>
+    <string name="reset_game">New game starting!</string>
 </resources>
